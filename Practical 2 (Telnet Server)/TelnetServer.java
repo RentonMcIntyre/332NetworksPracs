@@ -24,7 +24,6 @@ import java.util.Random;
  */
 public class TelnetServer {
     private static ArrayList<Socket> users = new ArrayList<Socket>();
-    private static int Question=-1;
     /**
      * @param args the command line arguments
      */
@@ -63,11 +62,11 @@ public class TelnetServer {
             {
                 Socket client=myServer.accept();
                 new TelThread(client).start();
+                announce("Welcome User to the Telnet Tester", client);
                 //list.add(0, client);
                 users.add(client);
                 currentQs.add(new currentQuestion(client, -1));
                 System.out.println("A new person has joined.");
-                announce("Welcome User to the Telnet Tester", client);
                 ///id++;
              //   ins();
 
@@ -105,13 +104,22 @@ public class TelnetServer {
 
 
             p=new PrintWriter(client.getOutputStream(),true);
-            p.println(" ");
+            p.write(27);
+            p.print("[2J");
             p.println(questions.get(n).question);
             char a='A';
+            int color = 31;
             for (int i=0;i<questions.get(n).answers.size();i++)
             {
-                p.println(a+":"+questions.get(n).answers.get(i).substring(1));
+                p.write(27);
+                p.print("[1;"+color+"m");
+                p.print(a);
+                p.write(27);
+                p.print("[0m");
+
+                p.println(":"+questions.get(n).answers.get(i).substring(1));
                 a++;
+                color+=1;
             }
             p.println(" ");
 
@@ -150,12 +158,13 @@ public class TelnetServer {
 
       }*/
       
-   synchronized static boolean checkAnswer(String ans)
+   synchronized static boolean checkAnswer(String ans, Socket client)
    {
 
+       
        testNode tmp=new testNode();
-       tmp.question=questions.get(Question).question;
-       tmp.answers=questions.get(Question).answers;
+       tmp.question=questions.get( getQ(client) ).question;
+       tmp.answers=questions.get( getQ(client) ).answers;
        int actualAns=-1,answer=-1;
        switch (ans)
        {
@@ -196,7 +205,11 @@ public class TelnetServer {
         PrintWriter p;
 
             p=new PrintWriter(client.getOutputStream(),true);
+            p.write(27);
+            p.print("[1;36m");
             p.println("Congratulations. You got it right!");
+            p.write(27);
+            p.print("[0m");
             user.score++;
             p.println(" ");
    }
@@ -227,10 +240,12 @@ public class TelnetServer {
         }
 
             p=new PrintWriter(client.getOutputStream(),true);
+            p.write(27);
+            p.print("[1;36m");
             p.println("The correct answer is:"+ cAns.substring(1));
+            p.write(27);
+            p.print("[0m");
             p.println(" ");
-            p.println("Enter input");
-
    }
 
     private static void constructTest() throws IOException

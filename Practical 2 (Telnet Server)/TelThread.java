@@ -53,7 +53,7 @@ public class TelThread extends Thread {
                 }
                 else
                 {*/
-                    if (TelnetServer.checkAnswer(line)==true)   TelnetServer.correctAns(this, mySocket); 
+                    if (TelnetServer.checkAnswer(line, mySocket)==true)   TelnetServer.correctAns(this, mySocket); 
                     else TelnetServer.wrongAns(TelnetServer.getQ(mySocket), mySocket);
 
                     TelnetServer.prompt(mySocket);

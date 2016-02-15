@@ -23,3 +23,27 @@
 +has single point of failure in the hub
 -is a network for important information only
 -is hard to add additional nodes to
+?DNS stands for:
++Domain Name Service
++Domain Name System
++Domain Name Server
+?Tim Berners-Lee was the inventor of:
+-Linux
++The World Wide Web
+-WiFi
+-The Client-Server Model
+?The symptoms of a Denial-Of-Service attack include:
++Unusually slow network performance (opening files or accessing web sites)
++Inability to access any web site
++Disconnection of a wireless or wired internet connection
++Unavailability of a particular web site
+?Low Orbit Ion Cannon is:
+-An orbital defence laser used by the Global Defence Initiative
+-A strategy of attacking a network's servers
+-A network stress testing application
+-A type of malware that specifically targets source files
+?The registrar of the co.za domain is
++UniForum
+-ZADNA
+-TENET
+-ZACR

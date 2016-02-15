@@ -1,0 +1,25 @@
+?IPv4 uses a:
+-16-bit address
+-64-bit address
++32-bit address
+-256-bit address
+?ISO stands for:
+-Internet Securities Ordnance
+-Intellectual Services Organisation
+-Interactive Systems Order
+-Interconnected Systems Operation
+?The following is/are is ISO OSI Layer 4 Protocol(s):
++RDP
++SST
++UDP
++FCP
+?Examples of Passive Network Attacks include:
++Wiretapping
+-DNS Spoofing
+-Heap Overflow
+-Man in the Middle
+?In telecommunications, a Star topology:
+-is a network topology used by NASA
++has single point of failure in the hub
+-is a network for important information only
+-is hard to add additional nodes to
